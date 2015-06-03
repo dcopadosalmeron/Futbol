@@ -2,17 +2,17 @@
 public class Equipo {
 //atributos
 private String nombre;
-private int PJ,PG,PE,PP,GF,GC,puntos;
+private int pj,pg,pe,pp,gf,gc,puntos;
 
 //constructor
 public Equipo(String nombre, int pJ, int pG, int pE, int pP, int gF, int gC,int puntos) {
 	this.nombre = nombre;
-	this.PJ = pJ;
-	this.PG = pG;
-	this.PE = pE;
-	this.PP = pP;
-	this.GF = gF;
-	this.GC = gC;
+	this.pj = pJ;
+	this.pg = pG; 
+	this.pe = pE;
+	this.pp = pP;
+	this.gf = gF;
+	this.gc = gC;
 	this.puntos = puntos;
 }
 
@@ -24,40 +24,40 @@ public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
 public int getPJ() {
-	return PJ;
+	return pj;
 }
 public void setPJ(int pJ) {
-	PJ = pJ;
+	pj = pJ;
 }
 public int getPG() {
-	return PG;
+	return pg;
 }
 public void setPG(int pG) {
-	PG = pG;
+	pg = pG;
 }
 public int getPE() {
-	return PE;
+	return pe;
 }
 public void setPE(int pE) {
-	PE = pE;
+	pe = pE;
 }
 public int getPP() {
-	return PP;
+	return pp;
 }
 public void setPP(int pP) {
-	PP = pP;
+	pp = pP;
 }
 public int getGF() {
-	return GF;
+	return gf;
 }
 public void setGF(int gF) {
-	GF = gF;
+	gf = gF;
 }
 public int getGC() {
-	return GC;
+	return gc;
 }
 public void setGC(int gC) {
-	GC = gC;
+	gc = gC;
 }
 public int getPuntos() {
 	return puntos;
@@ -65,5 +65,8 @@ public int getPuntos() {
 public void setPuntos(int puntos) {
 	this.puntos = puntos;
 }
+
+
+
 
 }
