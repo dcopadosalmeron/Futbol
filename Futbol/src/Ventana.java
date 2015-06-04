@@ -67,18 +67,29 @@ public class Ventana {
 		frmFutbol.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFutbol.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmFutbol.setLocationRelativeTo(null);
+		Principal pr1 = new Principal();
 		
 		JPanel panel = new JPanel();
 		frmFutbol.getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAnterior = new JButton("Anterior");
+		btnAnterior.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			pr1.anterior();
+			}
+		});
 		panel.add(btnAnterior);
 		
 		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 		panel.add(horizontalStrut_1);
 		
 		JButton btnSiguiente = new JButton("Siguiente");
+		btnSiguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				pr1.siguiente();
+			}
+		});
 		panel.add(btnSiguiente);
 		
 		Component horizontalStrut = Box.createHorizontalStrut(80);
@@ -117,7 +128,8 @@ public class Ventana {
 			    int returnVal = chooser.showOpenDialog(frmFutbol);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
 			    	File in = chooser.getSelectedFile();
-			    	TestEquipo.imprimir(in);
+			    	pr1.cargarDatos(in);
+			    	pr1.siguiente();
 			    }
 			}
 		});

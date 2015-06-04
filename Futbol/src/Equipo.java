@@ -66,6 +66,13 @@ public void setPuntos(int puntos) {
 	this.puntos = puntos;
 }
 
+@Override
+public String toString() {
+	return nombre + "|" + pj + "|" + pg + "|"
+			+ pe + "|" + pp + "|" + gf + "|" + gc + "|"
+			+ puntos;
+}
+
 
 
 
