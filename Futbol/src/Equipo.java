@@ -68,8 +68,8 @@ public void setPuntos(int puntos) {
 
 @Override
 public String toString() {
-	return nombre + "|" + pj + "|" + pg + "|"
-			+ pe + "|" + pp + "|" + gf + "|" + gc + "|"
+	return nombre + "\t" + pj + "\t" + pg + "\t"
+			+ pe + "\t" + pp + "\t" + gf + "\t" + gc + "\t"
 			+ puntos;
 }
 

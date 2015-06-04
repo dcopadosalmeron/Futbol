@@ -1,18 +1,21 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Principal {
-	//variables y constantes utilizadas por los metodos
-	private int longitud;
-	private int inicio = 0;
+	// variables utilizadas por los metodos
 	private ArrayList<Equipo> listaEquipos = new ArrayList<Equipo>();
-	private int numeroPaginas = 0;
-	private final int numerodefilas=7;
-	
-	
-	//metodo cargar datos 
+	private String cabecera=JTableModel.nombreColumnas[0]+"\t"+JTableModel.nombreColumnas[1]
+			+"\t"+JTableModel.nombreColumnas[2]+"\t"+JTableModel.nombreColumnas[3]+"\t"
+			+JTableModel.nombreColumnas[4]+"\t"+JTableModel.nombreColumnas[5]+"\t"
+			+JTableModel.nombreColumnas[6]+"\t"+JTableModel.nombreColumnas[7];
+
+	// metodo cargar datos
 	public void cargarDatos(File in) {
 		Scanner scanner;
 		String lineaLeida;
@@ -34,7 +37,6 @@ public class Principal {
 						.parseInt(campos[7].trim())));
 			}
 
-			this.longitud = listaEquipos.size();
 			scanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -42,28 +44,21 @@ public class Principal {
 
 	}
 
-	// metodo para recorrer la coleccion de objetos
-	public void siguiente() {
-		if (this.longitud >= numerodefilas) {
-			for (int i = this.inicio; i < (this.inicio + numerodefilas); i++) {
-				System.out.println(listaEquipos.get(i).toString());
+	public void guardarDatos(File f,ArrayList<Equipo> lista) {
+		try (PrintWriter out = new PrintWriter(f)) {
+			out.println(cabecera);
+			for (Equipo equipo : lista) {
+				out.println(equipo);
 			}
-			this.inicio += numerodefilas;
-			this.longitud -= numerodefilas;
-			this.numeroPaginas++;
-			
-		} else if (this.longitud < numerodefilas && this.longitud > 0) {
-			for (int i = this.inicio; i < (listaEquipos.size()); i++) {
-				System.out.println(listaEquipos.get(i).toString());
-			}
-			this.longitud = 0;
-			this.numeroPaginas++;
-			
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
-	}
-	
-	public void anterior() {
 		
+	}
+
+	public ArrayList<Equipo> getListaEquipos() {
+		return listaEquipos;
 	}
 
 }
