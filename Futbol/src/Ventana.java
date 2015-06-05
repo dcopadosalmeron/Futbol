@@ -70,14 +70,14 @@ public class Ventana {
 	 */
 	private void initialize() {
 		frmFutbol = new JFrame();
-		frmFutbol.setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana.class.getResource("/icono/balon.png")));
+		frmFutbol.setIconImage(Toolkit.getDefaultToolkit().getImage(
+				Ventana.class.getResource("/icono/balon.png")));
 		frmFutbol.setTitle("Futbol");
 		frmFutbol.setResizable(false);
 		frmFutbol.setBounds(100, 100, 506, 265);
 		frmFutbol.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmFutbol.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmFutbol.setLocationRelativeTo(null);
-
 
 		JPanel panel = new JPanel();
 		frmFutbol.getContentPane().add(panel, BorderLayout.SOUTH);
@@ -177,19 +177,19 @@ public class Ventana {
 		});
 		mnAcercaDe.add(mntmAutor);
 	}
-	//metodo que guarda los datos en un fichero con la fecha y hora actual
-	private void guardar(){
+
+	// metodo que guarda los datos en un fichero con la fecha y hora actual
+	private void guardar() {
 		try {
-			String sinExtension = ruta.getName().replaceFirst(
+			String sinExtension = ruta.getAbsolutePath().replaceFirst(
 					"[.][^.]+$", "");
 			String fecha = (LocalDate.now().format(
 					DateTimeFormatter.ofPattern("dd-MM-yyyy"))
 					+ " " + LocalTime.now().format(
 					DateTimeFormatter.ofPattern("HH'h'mm'm'ss's'")));
-			String rutaFinal = ruta.getParent() + "/" + sinExtension
-					+ " " + fecha + ".txt";
+			String rutaFinal = sinExtension + " " + fecha + ".txt";
 			File temporal = new File(rutaFinal);
-			pr1.guardarDatos(temporal,modelo.getEquipos());
+			pr1.guardarDatos(temporal, modelo.getEquipos());
 		} catch (Exception x) {
 			JOptionPane.showMessageDialog(null,
 					"No se ha guardado ningún dato.", "Error",

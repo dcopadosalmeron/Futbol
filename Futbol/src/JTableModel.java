@@ -2,19 +2,18 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+@SuppressWarnings("serial")
 public class JTableModel extends AbstractTableModel {
 	private int numeroFilas = 9;
 	private int indice = 0;
 	private ArrayList<Equipo> equipos;
-	public static String[] nombreColumnas = { "Equipo", "P.J.", "P.G.", "P.E.", "P.P.",
-			"G.F.", "G.C.", "Ptos" };
-
-
+	public static String[] nombreColumnas = { "Equipo", "P.J.", "P.G.", "P.E.",
+			"P.P.", "G.F.", "G.C.", "Ptos" };
 
 	public ArrayList<Equipo> getEquipos() {
 		return equipos;
 	}
-	
+
 	public JTableModel(ArrayList<Equipo> lista) {
 		this.equipos = lista;
 	}

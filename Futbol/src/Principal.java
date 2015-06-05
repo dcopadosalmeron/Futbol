@@ -1,24 +1,28 @@
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Principal {
-	// variables utilizadas por los metodos
+	// Lista de todos los equipos leidos
 	private ArrayList<Equipo> listaEquipos = new ArrayList<Equipo>();
-	private String cabecera=JTableModel.nombreColumnas[0]+"\t"+JTableModel.nombreColumnas[1]
-			+"\t"+JTableModel.nombreColumnas[2]+"\t"+JTableModel.nombreColumnas[3]+"\t"
-			+JTableModel.nombreColumnas[4]+"\t"+JTableModel.nombreColumnas[5]+"\t"
-			+JTableModel.nombreColumnas[6]+"\t"+JTableModel.nombreColumnas[7];
+	
+	private String cabecera = JTableModel.nombreColumnas[0] + "\t"
+			+ JTableModel.nombreColumnas[1] + "\t"
+			+ JTableModel.nombreColumnas[2] + "\t"
+			+ JTableModel.nombreColumnas[3] + "\t"
+			+ JTableModel.nombreColumnas[4] + "\t"
+			+ JTableModel.nombreColumnas[5] + "\t"
+			+ JTableModel.nombreColumnas[6] + "\t"
+			+ JTableModel.nombreColumnas[7];
 
-	// metodo cargar datos
+	// metodo cargar datos del fichero de entrada
 	public void cargarDatos(File in) {
 		Scanner scanner;
 		String lineaLeida;
+		String[] campos;
 
 		try {
 
@@ -28,7 +32,7 @@ public class Principal {
 
 				lineaLeida = scanner.nextLine().trim();
 
-				String[] campos = lineaLeida.split("\t");
+				campos = lineaLeida.split("\t");
 				listaEquipos.add(new Equipo(campos[0].trim(), Integer
 						.parseInt(campos[1].trim()), Integer.parseInt(campos[2]
 						.trim()), Integer.parseInt(campos[3].trim()), Integer
@@ -43,8 +47,8 @@ public class Principal {
 		}
 
 	}
-
-	public void guardarDatos(File f,ArrayList<Equipo> lista) {
+	//metodo para guardar los nuevos datos en un fichero
+	public void guardarDatos(File f, ArrayList<Equipo> lista) {
 		try (PrintWriter out = new PrintWriter(f)) {
 			out.println(cabecera);
 			for (Equipo equipo : lista) {
@@ -54,9 +58,9 @@ public class Principal {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		
-	}
 
+	}
+	//getter de la lista de equipos leidos
 	public ArrayList<Equipo> getListaEquipos() {
 		return listaEquipos;
 	}
